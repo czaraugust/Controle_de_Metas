@@ -86,9 +86,20 @@ public class Grupo {
         			if (listadegrupos.get(chave).getArray().get(i).getLogin() == funcionario.getLogin());
         			
         			System.out.println("Grupo " + listadegrupos.get(chave).getNome());
-        		}
-              
+        		}              
         }  
 				
 	}
+	void imprimirMetas( String grupo){
+		
+		Set<String> chaves = listadegrupos.get(grupo).getListademetas().keySet();
+		
+        for (String chave : chaves)  
+        { 
+        	System.out.println("Metas " + listademetas.get(chave).getMeta());
+        
+        }
+		
+	}
+	
 }
