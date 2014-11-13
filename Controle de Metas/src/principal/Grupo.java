@@ -86,6 +86,8 @@ public class Grupo {
         			if (listadegrupos.get(chave).getArray().get(i).getLogin() == funcionario.getLogin());
         			
         			System.out.println("Grupo " + listadegrupos.get(chave).getNome());
+        			imprimirMetas(listadegrupos.get(chave).getNome());
+        			
         		}              
         }  
 				
@@ -97,7 +99,8 @@ public class Grupo {
         for (String chave : chaves)  
         { 
         	System.out.println("Metas " + listademetas.get(chave).getMeta());
-        
+        	System.out.println("Data " + listademetas.get(chave).getData());
+        	System.out.println("");
         }
 		
 	}
