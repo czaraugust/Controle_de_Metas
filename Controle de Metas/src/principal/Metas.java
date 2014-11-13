@@ -1,10 +1,13 @@
 package principal;
-import java.util.HashMap; ;
+import java.util.ArrayList;
+//import java.util.HashMap; 
 
 public class Metas {
-	public HashMap<String, Metas>  listademetas;
 	String grupo, meta, data, criador;
 	int porcentagem;
+	private ArrayList <String> comentarios;
+	
+	
 	public Metas(String grupo, String meta, String data, String criador,  int porcentagem) {
 		super();
 		this.grupo = grupo;
@@ -12,6 +15,14 @@ public class Metas {
 		this.data = data;
 		this.criador = criador;
 		this.porcentagem = porcentagem;
+		comentarios = new ArrayList<>();
+		
+	}
+	public ArrayList<String> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(ArrayList<String> comentarios) {
+		this.comentarios = comentarios;
 	}
 	public int getPorcentagem() {
 		return porcentagem;
@@ -31,6 +42,7 @@ public class Metas {
 	public void setData(String data) {
 		this.data = data;
 	}
+	
 	
 	
 

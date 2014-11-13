@@ -3,8 +3,19 @@ import java.util.HashMap;
 import java.util.ArrayList;
 public class Grupo {
 	public HashMap<String, Grupo>  listadegrupos;
+
+
 	private String nome;
-	private ArrayList <Funcionário> array;
+	private ArrayList <Funcionário> membros;
+	private HashMap<String, Metas>  listademetas;
+
+
+	public Grupo(String nome) {
+		this.nome = nome;
+		this.membros = new ArrayList<>();
+		this.listademetas = new HashMap<>();
+
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -13,23 +24,21 @@ public class Grupo {
 		this.nome = nome;
 	}
 
+
 	public ArrayList<Funcionário> getArray() {
-		return array;
+		return membros;
 	}
 
-	public Grupo(String nome) {
-		this.nome = nome;
-		ArrayList <Funcionário> array = new ArrayList<>();
-
+	public HashMap<String, Metas> getListademetas() {
+		return listademetas;
 	}
-
 	void criarGrupo(String nome, Funcionário funcionario){	
 		if (listadegrupos.containsKey(nome)){
 			System.err.println("Grupo já existente! Digite outro nome!");	
 		}
 		else{
 			Grupo grupo = new Grupo(nome);
-			grupo.array.add(funcionario);
+			grupo.membros.add(funcionario);
 			listadegrupos.put(nome, grupo);
 
 			System.out.println("Grupo criado com sucesso!");
@@ -47,12 +56,23 @@ public class Grupo {
 
 		}
 	}
-	
+
 	void addMembro (Funcionário membro, Grupo grupo){
 		listadegrupos.get(grupo.getNome()).getArray().add(membro);
 	}
-	
+
 	void removeMembro(Funcionário membro, Grupo grupo){
 		listadegrupos.get(grupo.getNome()).getArray().remove(membro);
+	}
+
+	void addMeta(String grupo, String meta, String data, String criador){
+
+		Metas metas = new Metas (grupo, meta, data, criador, 0);
+		listadegrupos.get(grupo).getListademetas().put(meta, metas);
+
+	}
+	void excluiMetas (String meta, String grupo){
+
+		listadegrupos.get(grupo).getListademetas().remove(meta);
 	}
 }
