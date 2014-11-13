@@ -1,6 +1,7 @@
 package principal;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Set;
 public class Grupo {
 	public HashMap<String, Grupo>  listadegrupos;
 
@@ -74,5 +75,20 @@ public class Grupo {
 	void excluiMetas (String meta, String grupo){
 
 		listadegrupos.get(grupo).getListademetas().remove(meta);
+	}
+	
+	void imprimirListaDeGrupos (Funcionário funcionario){
+		Set<String> chaves = listadegrupos.keySet();  
+		
+        for (String chave : chaves)  
+        {  
+        		for (int i = 0; i< listadegrupos.get(chave).getArray().size(); i++){
+        			if (listadegrupos.get(chave).getArray().get(i).getLogin() == funcionario.getLogin());
+        			
+        			System.out.println("Grupo " + listadegrupos.get(chave).getNome());
+        		}
+              
+        }  
+				
 	}
 }
