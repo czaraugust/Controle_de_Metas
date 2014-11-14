@@ -34,8 +34,13 @@ import javax.swing.JComboBox;
 import javax.swing.Box;
 import javax.swing.JEditorPane;
 import java.awt.Panel;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
+import javax.swing.JButton;
 
 public class InterfaceGrafica extends JFrame {
+	private JPasswordField passwordField;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -72,6 +77,42 @@ public class InterfaceGrafica extends JFrame {
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBounds(28, 58, 162, 232);
 		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JTextPane txtpnEntrar = new JTextPane();
+		txtpnEntrar.setBounds(52, 6, 46, 24);
+		txtpnEntrar.setBackground(SystemColor.menu);
+		txtpnEntrar.setFont(new Font("Arial", Font.PLAIN, 15));
+		txtpnEntrar.setText("Entrar");
+		panel.add(txtpnEntrar);
+		
+		passwordField = new JPasswordField();
+		passwordField.setToolTipText("");
+		passwordField.setBounds(32, 131, 86, 20);
+		panel.add(passwordField);
+		
+		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBounds(35, 177, 83, 23);
+		panel.add(btnEntrar);
+		
+		JTextPane txtpnSenha = new JTextPane();
+		txtpnSenha.setBackground(SystemColor.menu);
+		txtpnSenha.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		txtpnSenha.setText("Senha (apenas n\u00FAmeros)");
+		txtpnSenha.setBounds(35, 100, 117, 20);
+		panel.add(txtpnSenha);
+		
+		JTextPane txtpnUsurio = new JTextPane();
+		txtpnUsurio.setBackground(SystemColor.menu);
+		txtpnUsurio.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		txtpnUsurio.setText("Usu\u00E1rio");
+		txtpnUsurio.setBounds(35, 41, 68, 17);
+		panel.add(txtpnUsurio);
+		
+		textField = new JTextField();
+		textField.setBounds(35, 69, 86, 20);
+		panel.add(textField);
+		textField.setColumns(10);
 		setFont(new Font("Arial", Font.PLAIN, 12));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
