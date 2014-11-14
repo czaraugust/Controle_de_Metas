@@ -22,6 +22,18 @@ import javax.swing.JToolBar;
 import javax.swing.BoxLayout;
 import javax.swing.JSeparator;
 import java.awt.Dimension;
+import java.awt.Window.Type;
+import javax.swing.JRadioButton;
+import javax.swing.JDesktopPane;
+import javax.swing.border.LineBorder;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextPane;
+import javax.swing.JLayeredPane;
+import java.awt.Label;
+import javax.swing.JComboBox;
+import javax.swing.Box;
+import javax.swing.JEditorPane;
+import java.awt.Panel;
 
 public class InterfaceGrafica extends JFrame {
 
@@ -45,21 +57,24 @@ public class InterfaceGrafica extends JFrame {
 	 * Create the frame.
 	 */
 	public InterfaceGrafica() {
+		setBackground(Color.LIGHT_GRAY);
 		setTitle("Gerenciador de Metas");
 		setForeground(Color.LIGHT_GRAY);
 		getContentPane().setFont(new Font("Arial", Font.PLAIN, 12));
+		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("GERENCIADOR DE METAS");
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setBackground(Color.LIGHT_GRAY);
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-		getContentPane().add(lblNewLabel, BorderLayout.NORTH);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBounds(235, 58, 162, 227);
+		getContentPane().add(panel_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(28, 58, 162, 232);
+		getContentPane().add(panel);
 		setFont(new Font("Arial", Font.PLAIN, 12));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400,400);
+		setBounds(100, 100, 426,384);
 	}
-
 }
