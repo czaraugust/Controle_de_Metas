@@ -41,6 +41,9 @@ import javax.swing.JButton;
 public class InterfaceGrafica extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -69,13 +72,61 @@ public class InterfaceGrafica extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBounds(235, 58, 162, 227);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JTextPane txtpnNome = new JTextPane();
+		txtpnNome.setBackground(SystemColor.menu);
+		txtpnNome.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		txtpnNome.setText("Nome");
+		txtpnNome.setBounds(36, 41, 46, 17);
+		panel_1.add(txtpnNome);
+		
+		JTextPane txtpnCadastrar = new JTextPane();
+		txtpnCadastrar.setBounds(51, 6, 71, 24);
+		txtpnCadastrar.setFont(new Font("Arial", Font.PLAIN, 15));
+		txtpnCadastrar.setBackground(SystemColor.menu);
+		txtpnCadastrar.setText("Cadastrar");
+		panel_1.add(txtpnCadastrar);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(36, 59, 86, 20);
+		panel_1.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JTextPane txtpnUsurio_1 = new JTextPane();
+		txtpnUsurio_1.setBackground(SystemColor.menu);
+		txtpnUsurio_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		txtpnUsurio_1.setText("Usu\u00E1rio");
+		txtpnUsurio_1.setBounds(36, 81, 86, 20);
+		panel_1.add(txtpnUsurio_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(36, 102, 86, 20);
+		panel_1.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JTextPane txtpnSenha_1 = new JTextPane();
+		txtpnSenha_1.setBackground(SystemColor.menu);
+		txtpnSenha_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		txtpnSenha_1.setText("Senha");
+		txtpnSenha_1.setBounds(33, 133, 57, 17);
+		panel_1.add(txtpnSenha_1);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(36, 151, 86, 20);
+		panel_1.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBounds(33, 193, 100, 23);
+		panel_1.add(btnCadastrar);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBounds(28, 58, 162, 232);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
