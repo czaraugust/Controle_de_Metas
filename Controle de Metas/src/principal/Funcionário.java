@@ -1,6 +1,6 @@
 package principal;
 import java.util.HashMap;
-
+import java.util.Set;
 public class Funcionário {
 
 	public HashMap <String, Funcionário> listadefuncionarios;
@@ -63,6 +63,12 @@ public class Funcionário {
 	}
 
 	void imprimirLista(){
+		Set<String> chaves = listadefuncionarios.keySet();  
+        for (String chave : chaves)  
+        {  
+           
+                System.out.println("Nome " + listadefuncionarios.get(chave).getName());  
+        }  
 		
 
 	}
