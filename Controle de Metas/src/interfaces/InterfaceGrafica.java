@@ -203,13 +203,22 @@ public class InterfaceGrafica extends JFrame {
 				int senha= 0;
 				try{
 					senha = Integer.parseInt(passwordField.getText());
-					System.out.println("Senha" +senha);
+					
+					Interface2 frame2 = new Interface2();
+					frame2.setVisible(true);
+					
 				}
 				catch (NumberFormatException e){
 					JOptionPane.showMessageDialog(null, "Senha inválida. Digite apenas números");
 					passwordField.setText("");
 
 				}
+				
+				
+				
+				
+				
+				
 				
 
 
