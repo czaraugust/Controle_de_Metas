@@ -154,24 +154,24 @@ public class InterfaceGrafica extends JFrame {
 				String nome = CampoNome.getText();
 				int senha = 0;
 				try{
-				senha = Integer.parseInt(CampoSenha.getText());
-				Funcionário funcionario = new Funcionário(nome, senha, isCoordenador.isSelected(), usuario);
-				String message = funcionario.criarFuncionario(funcionario);
-				JOptionPane.showMessageDialog(null, message);
-				CampoNome.setText("");
-				CampoUsuario.setText("");
-				CampoSenha.setText("");
-								
+					senha = Integer.parseInt(CampoSenha.getText());
+					Funcionário funcionario = new Funcionário(nome, senha, isCoordenador.isSelected(), usuario);
+					String message = funcionario.criarFuncionario(funcionario);
+					JOptionPane.showMessageDialog(null, message);
+					CampoNome.setText("");
+					CampoUsuario.setText("");
+					CampoSenha.setText("");
+
 				}
 				catch (NumberFormatException e){
 					JOptionPane.showMessageDialog(null, "Senha inválida. Digite apenas números");
-					
+
 				}
-				
+
 				CampoSenha.setText("");
-				
-				
-				
+
+
+
 
 			}
 		});
@@ -199,11 +199,23 @@ public class InterfaceGrafica extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String usuario = UserField.getText();
+				int senha= 0;
+				try{
+					senha = Integer.parseInt(passwordField.getText());
+					System.out.println("Senha" +senha);
+				}
+				catch (NumberFormatException e){
+					JOptionPane.showMessageDialog(null, "Senha inválida. Digite apenas números");
+					passwordField.setText("");
+
+				}
 				
-				
-				//JOptionPane.showMessageDialog(null, "      OK!");
+
 
 			}
+
+
 		});
 		btnEntrar.setBounds(35, 177, 83, 23);
 		panel.add(btnEntrar);

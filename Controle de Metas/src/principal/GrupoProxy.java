@@ -1,5 +1,21 @@
 package principal;
 
-public class GrupoProxy {
+import java.util.HashMap;
 
+public class GrupoProxy implements GrupoInterface{
+	private Grupo grupo;
+	
+	@Override
+	public HashMap<String, Grupo> imprimirListaDeGrupos (Funcionário funcionario, int senha) {
+		if (funcionario.getSenha() == senha ){
+			
+			
+			return grupo.imprimirListaDeGrupos(funcionario, senha);
+		}
+		else{
+			return null;
+		}
+		
+		
+	}
 }

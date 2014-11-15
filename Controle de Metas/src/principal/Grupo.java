@@ -2,8 +2,8 @@ package principal;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Set;
-public class Grupo implements GrupoInterface{
-	public HashMap<String, Grupo>  listadegrupos;
+public  class Grupo implements GrupoInterface{
+	static public HashMap<String, Grupo>  listadegrupos = new HashMap<String, Grupo>();
 
 
 	private String nome;
@@ -76,21 +76,22 @@ public class Grupo implements GrupoInterface{
 
 		listadegrupos.get(grupo).getListademetas().remove(meta);
 	}
-
-
-	void imprimirListaDeGrupos (Funcionário funcionario){
-		Set<String> chaves = listadegrupos.keySet();  
+	@Override
+	public HashMap <String , Grupo> imprimirListaDeGrupos (Funcionário funcionario, int senha){
+		
+		Set<String> chaves = listadegrupos.keySet();
+		HashMap<String , Grupo> auxiliar = new HashMap<>();
 
 		for (String chave : chaves)  
 		{  
 			for (int i = 0; i< listadegrupos.get(chave).getArray().size(); i++){
 				if (listadegrupos.get(chave).getArray().get(i).getLogin() == funcionario.getLogin());
-
-				System.out.println("Grupo " + listadegrupos.get(chave).getNome());
-				imprimirMetas(listadegrupos.get(chave).getNome());
+				auxiliar.put(listadegrupos.get(chave).getNome(), listadegrupos.get(chave));
 
 			}              
 		}  
+		
+		return auxiliar;
 
 	}
 	void imprimirMetas( String grupo){
