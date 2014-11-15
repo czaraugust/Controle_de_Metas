@@ -76,34 +76,34 @@ public class Grupo {
 
 		listadegrupos.get(grupo).getListademetas().remove(meta);
 	}
-	
-	
+
+
 	void imprimirListaDeGrupos (Funcionário funcionario){
 		Set<String> chaves = listadegrupos.keySet();  
-		
-        for (String chave : chaves)  
-        {  
-        		for (int i = 0; i< listadegrupos.get(chave).getArray().size(); i++){
-        			if (listadegrupos.get(chave).getArray().get(i).getLogin() == funcionario.getLogin());
-        			
-        			System.out.println("Grupo " + listadegrupos.get(chave).getNome());
-        			imprimirMetas(listadegrupos.get(chave).getNome());
-        			
-        		}              
-        }  
-				
+
+		for (String chave : chaves)  
+		{  
+			for (int i = 0; i< listadegrupos.get(chave).getArray().size(); i++){
+				if (listadegrupos.get(chave).getArray().get(i).getLogin() == funcionario.getLogin());
+
+				System.out.println("Grupo " + listadegrupos.get(chave).getNome());
+				imprimirMetas(listadegrupos.get(chave).getNome());
+
+			}              
+		}  
+
 	}
 	void imprimirMetas( String grupo){
-		
+
 		Set<String> chaves = listadegrupos.get(grupo).getListademetas().keySet();
-		
-        for (String chave : chaves)  
-        { 
-        	System.out.println("Metas " + listademetas.get(chave).getMeta());
-        	System.out.println("Data " + listademetas.get(chave).getData());
-        	System.out.println("");
-        }
-		
+
+		for (String chave : chaves)  
+		{ 
+			System.out.println("Metas " + listademetas.get(chave).getMeta());
+			System.out.println("Data " + listademetas.get(chave).getData());
+			System.out.println("");
+		}
+
 	}
-	
+
 }

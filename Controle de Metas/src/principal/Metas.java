@@ -6,8 +6,8 @@ public class Metas {
 	String grupo, meta, data, criador;
 	int porcentagem;
 	private ArrayList <String> comentarios;
-	
-	
+
+
 	public Metas(String grupo, String meta, String data, String criador,  int porcentagem) {
 		super();
 		this.grupo = grupo;
@@ -16,7 +16,7 @@ public class Metas {
 		this.criador = criador;
 		this.porcentagem = porcentagem;
 		comentarios = new ArrayList<>();
-		
+
 	}
 	public ArrayList<String> getComentarios() {
 		return comentarios;
@@ -42,8 +42,8 @@ public class Metas {
 	public void setData(String data) {
 		this.data = data;
 	}
-	
-	
-	
+
+
+
 
 }

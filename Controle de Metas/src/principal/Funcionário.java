@@ -1,26 +1,27 @@
 package principal;
 import java.util.HashMap;
 import java.util.Set;
+
 public class Funcionário {
 
-	public HashMap <String, Funcionário> listadefuncionarios;
-
-	private String name;
+	static public HashMap <String, Funcionário> listadefuncionarios = new HashMap<String, Funcionário>();
+	private String nome;
 	private String login;
 	private int senha;
 	private boolean isCoordinator = false;
 
-	public Funcionário(String name, int senha, boolean isCoordinator, String nome) {
-		super();
-		this.name = name;
+	public Funcionário(String nome, int senha, boolean isCoordinator, String login ){
+		this.login = login;
+		this.nome = nome;
 		this.senha = senha;
 		this.isCoordinator = isCoordinator;
+
 	}
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.nome = name;
 	}
 	public int getSenha() {
 		return senha;
@@ -41,35 +42,38 @@ public class Funcionário {
 		this.isCoordinator = isCoordinator;
 	}
 
-	void criarFuncionario(String name, int senha, boolean isCoordinator, String login){
-		if ( listadefuncionarios.containsKey(login) ) { 
-			System.err.println("Login indisponível"); 
+	public String criarFuncionario(Funcionário funcionario){
+		String texto = null;
+		if ( listadefuncionarios.containsKey(funcionario.getLogin()) ) { 
+			texto = "Usuário indisponível"; 
 		}
 		else{ 
-			Funcionário funcionario = new Funcionário(name, senha, isCoordinator, login);
-			listadefuncionarios.put(login, funcionario);
-			System.out.println("Cadastro realizado com sucesso!");
+			listadefuncionarios.put(funcionario.getLogin(), funcionario);
+			texto ="Cadastro realizado com sucesso!";
 		}
+		return texto;
 
 	}
-	void deletarFuncionario(String login){
+	public String deletarFuncionario(String login){
+		String texto = null;
 		if ( listadefuncionarios.containsKey(login) ) { 
 			listadefuncionarios.remove(login);
-			System.out.println("Funcionário deletado com sucesso!");
+			texto = "Funcionário deletado com sucesso!";
 		}
 		else{ 
-			System.err.println("Login digitado não existe!"); 
+			texto = "Login digitado não existe!"; 
 		}
+		return texto;
 	}
 
 	void imprimirLista(){
 		Set<String> chaves = listadefuncionarios.keySet();  
-        for (String chave : chaves)  
-        {  
-           
-                System.out.println("Nome " + listadefuncionarios.get(chave).getName());  
-        }  
-		
+		for (String chave : chaves)  
+		{  
+
+			System.out.println("Nome " + listadefuncionarios.get(chave).getNome());  
+		}  
+
 
 	}
 }
