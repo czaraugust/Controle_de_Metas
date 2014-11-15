@@ -2,7 +2,7 @@ package principal;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Set;
-public class Grupo {
+public class Grupo implements GrupoInterface{
 	public HashMap<String, Grupo>  listadegrupos;
 
 

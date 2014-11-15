@@ -152,13 +152,26 @@ public class InterfaceGrafica extends JFrame {
 
 				String usuario = CampoUsuario.getText();
 				String nome = CampoNome.getText();
-				int senha = Integer.parseInt(CampoSenha.getText());
-
+				int senha = 0;
+				try{
+				senha = Integer.parseInt(CampoSenha.getText());
 				Funcionário funcionario = new Funcionário(nome, senha, isCoordenador.isSelected(), usuario);
 				String message = funcionario.criarFuncionario(funcionario);
 				JOptionPane.showMessageDialog(null, message);
-
-				//LIMPAR CAMPOS DEPOIS DO OK
+				CampoNome.setText("");
+				CampoUsuario.setText("");
+				CampoSenha.setText("");
+								
+				}
+				catch (NumberFormatException e){
+					JOptionPane.showMessageDialog(null, "Senha inválida. Digite apenas números");
+					
+				}
+				
+				CampoSenha.setText("");
+				
+				
+				
 
 			}
 		});
