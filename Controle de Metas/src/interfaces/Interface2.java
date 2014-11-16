@@ -1,6 +1,7 @@
 package interfaces;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -25,6 +26,8 @@ import java.awt.Font;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
+
+import principal.Grupo;
 
 public class Interface2 extends JFrame {
 
@@ -56,6 +59,8 @@ public class Interface2 extends JFrame {
 	 */
 
 	public Interface2() {
+		
+		//QUERO PEGAR AQUELE VALOR DE USUARIO E RECEBER ELE AQUI DENTRO
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 470, 382);
 		contentPane = new JPanel();
@@ -143,6 +148,10 @@ public class Interface2 extends JFrame {
 				
 				DefaultTableModel val = (DefaultTableModel) table.getModel();
 				val.addRow(new String []{nome, coordenador});
+				Grupo grupo = new Grupo(nome);
+				
+			
+				
 				CampoCoordenador.setText("");
 				Camponome.setText("");
 				

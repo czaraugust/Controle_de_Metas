@@ -15,6 +15,8 @@ public  class Grupo implements GrupoInterface{
 		this.nome = nome;
 		this.membros = new ArrayList<>();
 		this.listademetas = new HashMap<>();
+		
+		System.out.println("NEW GROUP!");
 
 	}
 	public String getNome() {
@@ -33,7 +35,7 @@ public  class Grupo implements GrupoInterface{
 	public HashMap<String, Metas> getListademetas() {
 		return listademetas;
 	}
-	void criarGrupo(String nome, Funcionário funcionario){	
+	public void criarGrupo(String nome, Funcionário funcionario){	
 		if (listadegrupos.containsKey(nome)){
 			System.err.println("Grupo já existente! Digite outro nome!");	
 		}

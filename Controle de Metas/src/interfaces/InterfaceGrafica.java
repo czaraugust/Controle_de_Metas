@@ -64,7 +64,7 @@ public class InterfaceGrafica extends JFrame {
 	private JTextField CampoNome;
 	private JTextField CampoUsuario;
 	private JTextField CampoSenha;
-	public static Stack<String> logins = new Stack<>(); 
+	
 
 
 	/**
@@ -210,7 +210,7 @@ public class InterfaceGrafica extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			Interface2 frame5 = new Interface2();
 			public void actionPerformed(ActionEvent arg0) {
-				
+				//PRECISO ENVIAR ESSA VARIVEL usuario PARA A CLASSE INTERFACE2
 				String usuario = UserField.getText();
 				int senha= 0;
 				try{
@@ -226,11 +226,10 @@ public class InterfaceGrafica extends JFrame {
 					}
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && funcionario.listadefuncionarios.get(usuario).isCoordinator()){
 							
-						
+						//AQUI
+						//AQUI
 						Interface2 frame2 = new Interface2();
-						logins.push(usuario);
 						frame2.setVisible(true);
-						//frame2.envia(UserField.getText());
 						System.out.println("tamanho" +funcionario.listadefuncionarios.size());
 						passwordField.setText("");
 						UserField.setText("");
