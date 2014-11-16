@@ -54,6 +54,7 @@ import java.awt.event.ActionEvent;
 import java.util.HashMap;
 
 import principal.Funcionário;
+import principal.Grupo;
 
 public class InterfaceGrafica extends JFrame {
 	private JPasswordField passwordField;
@@ -83,8 +84,9 @@ public class InterfaceGrafica extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @return 
 	 */
-	public InterfaceGrafica() {
+	public  InterfaceGrafica() {
 		setBackground(Color.LIGHT_GRAY);
 		setTitle("Gerenciador de Metas");
 		setForeground(Color.LIGHT_GRAY);
@@ -161,6 +163,7 @@ public class InterfaceGrafica extends JFrame {
 					CampoNome.setText("");
 					CampoUsuario.setText("");
 					CampoSenha.setText("");
+					isCoordenador.setSelected(false);
 
 				}
 				catch (NumberFormatException e){
@@ -196,6 +199,8 @@ public class InterfaceGrafica extends JFrame {
 		passwordField.setBounds(32, 131, 86, 20);
 		panel.add(passwordField);
 
+		
+		//LOGIN
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -203,9 +208,39 @@ public class InterfaceGrafica extends JFrame {
 				int senha= 0;
 				try{
 					senha = Integer.parseInt(passwordField.getText());
+					System.out.println("Senha" +senha);
+					String nome = "";
+					Funcionário funcionario = new  Funcionário(nome, senha, false, usuario);
+					Grupo grupo =null;
+					if (funcionario.listadefuncionarios.isEmpty()){
+						JOptionPane.showMessageDialog(null, "Não há nenhum funcionário cadastrado!");
+						passwordField.setText("");
+						UserField.setText("");
+					}
+					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && funcionario.listadefuncionarios.get(usuario).isCoordinator()){
+							
+						passwordField.setText("");
+						UserField.setText("");
+						Interface2 frame2 = new Interface2();
+						frame2.setVisible(true);
+						Interface2.retornaUser(usuario);
+						
+					}
+					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && !funcionario.listadefuncionarios.get(usuario).isCoordinator()){
+						passwordField.setText("");
+						UserField.setText("");
+						Interface3 frame3 = new Interface3();
+						frame3.setVisible(true);
+					}
 					
-					Interface2 frame2 = new Interface2();
-					frame2.setVisible(true);
+					
+					else {
+						JOptionPane.showMessageDialog(null, "Senha ou usuário incorreto!");
+						passwordField.setText("");
+						UserField.setText("");
+						
+					}
+					
 					
 				}
 				catch (NumberFormatException e){
@@ -226,6 +261,8 @@ public class InterfaceGrafica extends JFrame {
 
 
 		});
+		
+		
 		btnEntrar.setBounds(35, 177, 83, 23);
 		panel.add(btnEntrar);
 
@@ -251,5 +288,8 @@ public class InterfaceGrafica extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 426,384);
+		
+		
 	}
+	
 }
