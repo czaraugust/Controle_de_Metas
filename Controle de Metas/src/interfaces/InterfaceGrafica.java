@@ -1,6 +1,7 @@
 package interfaces;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -52,6 +53,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.HashMap;
+import java.util.Stack;
 
 import principal.Funcionário;
 import principal.Grupo;
@@ -62,6 +64,8 @@ public class InterfaceGrafica extends JFrame {
 	private JTextField CampoNome;
 	private JTextField CampoUsuario;
 	private JTextField CampoSenha;
+	public static Stack<String> logins = new Stack<>(); 
+
 
 	/**
 	 * Launch the application.
@@ -202,15 +206,18 @@ public class InterfaceGrafica extends JFrame {
 		
 		//LOGIN
 		JButton btnEntrar = new JButton("Entrar");
+		
 		btnEntrar.addActionListener(new ActionListener() {
+			Interface2 frame5 = new Interface2();
 			public void actionPerformed(ActionEvent arg0) {
+				
 				String usuario = UserField.getText();
 				int senha= 0;
 				try{
 					senha = Integer.parseInt(passwordField.getText());
-					System.out.println("Senha" +senha);
-					String nome = "";
-					Funcionário funcionario = new  Funcionário(nome, senha, false, usuario);
+					
+					
+					Funcionário funcionario = new  Funcionário("", senha, false, usuario);
 					Grupo grupo =null;
 					if (funcionario.listadefuncionarios.isEmpty()){
 						JOptionPane.showMessageDialog(null, "Não há nenhum funcionário cadastrado!");
@@ -219,11 +226,16 @@ public class InterfaceGrafica extends JFrame {
 					}
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && funcionario.listadefuncionarios.get(usuario).isCoordinator()){
 							
+						
+						Interface2 frame2 = new Interface2();
+						logins.push(usuario);
+						frame2.setVisible(true);
+						//frame2.envia(UserField.getText());
+						System.out.println("tamanho" +funcionario.listadefuncionarios.size());
 						passwordField.setText("");
 						UserField.setText("");
-						Interface2 frame2 = new Interface2();
-						frame2.setVisible(true);
-						Interface2.retornaUser(usuario);
+						
+						
 						
 					}
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && !funcionario.listadefuncionarios.get(usuario).isCoordinator()){
@@ -248,15 +260,6 @@ public class InterfaceGrafica extends JFrame {
 					passwordField.setText("");
 
 				}
-				
-				
-				
-				
-				
-				
-				
-
-
 			}
 
 
