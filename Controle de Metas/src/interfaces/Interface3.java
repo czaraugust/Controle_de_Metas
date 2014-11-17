@@ -45,15 +45,24 @@ public class Interface3 extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTextPane txtpnGrupos = new JTextPane();
+		txtpnGrupos.setBounds(181, 11, 58, 20);
 		txtpnGrupos.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtpnGrupos.setBackground(SystemColor.menu);
 		txtpnGrupos.setText("Grupos");
-		txtpnGrupos.setBounds(181, 11, 58, 20);
 		contentPane.add(txtpnGrupos);
 		
 		JButton btnAbrirGrupo = new JButton("Abrir Grupo");
 		btnAbrirGrupo.setBounds(145, 266, 147, 23);
 		contentPane.add(btnAbrirGrupo);
+		
+		JTextPane txtpnNome = new JTextPane();
+		txtpnNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtpnNome.setBackground(SystemColor.menu);
+		txtpnNome.setText("Nome");
+		txtpnNome.setBounds(40, 37, 47, 23);
+		txtpnNome.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		
+		contentPane.add(txtpnNome);
 	}
 
 }
