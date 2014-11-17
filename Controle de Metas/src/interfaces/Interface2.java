@@ -149,6 +149,7 @@ public class Interface2 extends JFrame {
 				DefaultTableModel val = (DefaultTableModel) table.getModel();
 				val.addRow(new String []{nome, coordenador});
 				Grupo grupo = new Grupo(nome);
+				///grupo.criarGrupo(nome, funcionario);
 				
 			
 				
