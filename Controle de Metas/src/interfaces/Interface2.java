@@ -36,6 +36,7 @@ public class Interface2 extends JFrame {
 	private JTable table;
 	private JTextField Camponome;
 	private JTextField CampoCoordenador;
+	private String usuario;
 
 
 	/**
@@ -45,7 +46,7 @@ public class Interface2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Interface2 frame = new Interface2();
+					Interface2 frame = new Interface2("");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +59,8 @@ public class Interface2 extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Interface2() {
+	public Interface2(String usuario ) {
+		this.usuario = usuario;
 		
 		//QUERO PEGAR AQUELE VALOR DE USUARIO E RECEBER ELE AQUI DENTRO
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -97,6 +99,8 @@ public class Interface2 extends JFrame {
 		btnExcluirGrupo.setBounds(129, 275, 118, 23);
 		panel.add(btnExcluirGrupo);
 		
+		
+		System.out.println("STRING" +usuario );
 		JTextPane txtpnNomeDoGrupo = new JTextPane();
 		txtpnNomeDoGrupo.setBackground(SystemColor.menu);
 		txtpnNomeDoGrupo.setText(" Nome do Grupo");

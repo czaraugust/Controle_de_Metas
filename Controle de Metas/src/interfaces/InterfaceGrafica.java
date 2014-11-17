@@ -208,7 +208,7 @@ public class InterfaceGrafica extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		
 		btnEntrar.addActionListener(new ActionListener() {
-			Interface2 frame5 = new Interface2();
+			
 			public void actionPerformed(ActionEvent arg0) {
 				//PRECISO ENVIAR ESSA VARIVEL usuario PARA A CLASSE INTERFACE2
 				String usuario = UserField.getText();
@@ -228,7 +228,7 @@ public class InterfaceGrafica extends JFrame {
 							
 						//AQUI
 						//AQUI
-						Interface2 frame2 = new Interface2();
+						Interface2 frame2 = new Interface2(usuario);
 						frame2.setVisible(true);
 						System.out.println("tamanho" +funcionario.listadefuncionarios.size());
 						passwordField.setText("");
