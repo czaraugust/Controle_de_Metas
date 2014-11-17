@@ -49,15 +49,18 @@ public  class Grupo implements GrupoInterface{
 
 	}
 
-	void deletarGrupo(String nome){
-		if (listadegrupos.containsKey(nome)){
+	public String deletarGrupo(String nome){
+		String texto =null;
+		
+		//if (listadegrupos.containsKey(nome)){
 			listadegrupos.remove(nome);
-			System.out.println("Grupo removido com sucesso!");
-		}
+			texto ="Grupo removido com sucesso!";
+	/*	}
 		else{		
-			System.err.println("Grupo informado não existe!");
+			"Grupo informado não existe!";
 
-		}
+		}*/
+		return texto;
 	}
 
 	void addMembro (Funcionário membro, Grupo grupo){
