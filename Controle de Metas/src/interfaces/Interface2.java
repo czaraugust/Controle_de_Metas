@@ -69,7 +69,8 @@ public class Interface2 extends JFrame {
 		contentPane.setLayout(null);
 
 		table = new JTable();
-		table.setFillsViewportHeight(true);
+		table.setColumnSelectionAllowed(true);
+		table.setEnabled(false);
 		table.setBounds(20, 64, 228, 208);
 		
 		

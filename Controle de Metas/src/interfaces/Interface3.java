@@ -56,13 +56,21 @@ public class Interface3 extends JFrame {
 		contentPane.add(btnAbrirGrupo);
 		
 		JTextPane txtpnNome = new JTextPane();
+		txtpnNome.setBounds(77, 34, 114, 23);
 		txtpnNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtpnNome.setBackground(SystemColor.menu);
-		txtpnNome.setText("Nome");
-		txtpnNome.setBounds(40, 37, 47, 23);
-		txtpnNome.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		txtpnNome.setText(" Nome do Grupo");
+		txtpnNome.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		contentPane.add(txtpnNome);
+		
+		JTextPane txtpnCoordenadorDoGrupo = new JTextPane();
+		txtpnCoordenadorDoGrupo.setBackground(SystemColor.menu);
+		txtpnCoordenadorDoGrupo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtpnCoordenadorDoGrupo.setText(" Coordenador do grupo");
+		txtpnCoordenadorDoGrupo.setBounds(191, 34, 161, 23);
+		txtpnCoordenadorDoGrupo.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.add(txtpnCoordenadorDoGrupo);
 	}
 
 }
