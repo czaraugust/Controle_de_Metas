@@ -33,7 +33,7 @@ import javax.swing.table.TableModel;
 
 import principal.Grupo;
 
-public class Interface2 extends JFrame {
+public class InterfaceGrupoCoordenador extends JFrame {
 
 	private JPanel contentPane;
 	private static String nome;
@@ -41,6 +41,7 @@ public class Interface2 extends JFrame {
 	private JTextField Camponome;
 	private String usuario;
 	public DefaultTableModel modelo;
+	private String selecao;
 
 
 
@@ -52,7 +53,7 @@ public class Interface2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Interface2 frame = new Interface2("");
+					InterfaceGrupoCoordenador frame = new InterfaceGrupoCoordenador("");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,8 +66,13 @@ public class Interface2 extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Interface2(String usuario ) {
+	public InterfaceGrupoCoordenador(String usuario ) {
+		setTitle("Seus grupos");
 		this.usuario = usuario;
+		
+		Grupo grupo = new Grupo(nome);
+		
+		
 		modelo = new DefaultTableModel();  
 		modelo.setColumnIdentifiers(new String []{"Nome do Grupo"});
 		table = new JTable(modelo);
@@ -95,23 +101,48 @@ public class Interface2 extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JTextPane txtpnGrupos = new JTextPane();
-		txtpnGrupos.setBounds(10, 11, 71, 23);
-		panel.add(txtpnGrupos);
-		txtpnGrupos.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtpnGrupos.setBackground(SystemColor.menu);
-		txtpnGrupos.setText("Grupos de");
-
 
 		JButton btnNewButton = new JButton("Abrir Grupo");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+				int selecionada = table.getSelectedRow();
+				try {
+				selecao = table.getValueAt(selecionada, 0).toString();
+				}
+				catch(ArrayIndexOutOfBoundsException e){
+					JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+				}
+				System.out.println("SELECIONADO" +selecao);
+				
+				InterfaceInternaGruposCoordenador framegrupo = new InterfaceInternaGruposCoordenador(usuario, selecao);
+				framegrupo.setVisible(true);
+				
+				
+				
 			}
 		});
 		btnNewButton.setBounds(10, 288, 109, 23);
 		panel.add(btnNewButton);
 
 		JButton btnExcluirGrupo = new JButton("Excluir Grupo");
+		btnExcluirGrupo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int selecionada = table.getSelectedRow();
+				selecao = table.getValueAt(selecionada, 0).toString();
+				modelo.removeRow(selecionada);
+				grupo.deletarGrupo(selecao);
+				JOptionPane.showMessageDialog(null, "Grupo deletado!");
+				
+				
+				
+				
+			
+				
+			}
+		});
 		btnExcluirGrupo.setBounds(129, 288, 118, 23);
 		panel.add(btnExcluirGrupo);
 
@@ -125,7 +156,7 @@ public class Interface2 extends JFrame {
 		txtpnNomeDoGrupo.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		JTextPane TextoUsuario = new JTextPane();
-		TextoUsuario.setBounds(78, 11, 109, 20);
+		TextoUsuario.setBounds(63, 11, 165, 20);
 		TextoUsuario.setBackground(SystemColor.menu);
 		panel.add(TextoUsuario);
 		TextoUsuario.setText(usuario);
@@ -152,13 +183,13 @@ public class Interface2 extends JFrame {
 
 
 
-		Grupo grupo = new Grupo(nome);
+		
 		DefaultTableModel val = (DefaultTableModel) table.getModel();
 		if (grupo.listadegrupos.isEmpty() == false){
 
 			Set<String> chaves = grupo.listadegrupos.keySet();
 			for (String chave : chaves){
-				if (grupo.listadegrupos.get(chave).getArray().containsValue(usuario)){
+				if (grupo.listadegrupos.get(chave).getArray().containsKey(usuario)){
 					val.addRow(new String []{grupo.listadegrupos.get(chave).getNome()});
 
 
@@ -176,7 +207,7 @@ public class Interface2 extends JFrame {
 				String nome = Camponome.getText().trim();
 
 
-				if (grupo.listadegrupos.containsValue(nome) == false){
+				if (!grupo.listadegrupos.containsKey(nome)){
 					val.addRow(new String []{nome});
 					Funcionário func = new Funcionário("", 0, false, "");
 

@@ -42,25 +42,22 @@ public  class Grupo implements GrupoInterface{
 		}
 		else{
 			Grupo grupo = new Grupo(nome);
-			grupo.membros.put(nome, funcionario);
 			listadegrupos.put(nome, grupo);
+			
+			addMembro(funcionario, grupo);
+	
+			
 
 		}
 
 	}
 
-	public String deletarGrupo(String nome){
-		String texto =null;
-		
-		//if (listadegrupos.containsKey(nome)){
+	public void deletarGrupo(String nome){
+	
 			listadegrupos.remove(nome);
-			texto ="Grupo removido com sucesso!";
-	/*	}
-		else{		
-			"Grupo informado não existe!";
-
-		}*/
-		return texto;
+		
+	
+	
 	}
 
 	void addMembro (Funcionário membro, Grupo grupo){

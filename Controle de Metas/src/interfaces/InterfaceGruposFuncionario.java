@@ -22,7 +22,7 @@ import principal.Grupo;
 import java.awt.Color;
 import java.util.Set;
 
-public class Interface3 extends JFrame {
+public class InterfaceGruposFuncionario extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -36,7 +36,7 @@ public class Interface3 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Interface3 frame = new Interface3();
+					InterfaceGruposFuncionario frame = new InterfaceGruposFuncionario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class Interface3 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Interface3() {
+	public InterfaceGruposFuncionario() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 350);
 		contentPane = new JPanel();

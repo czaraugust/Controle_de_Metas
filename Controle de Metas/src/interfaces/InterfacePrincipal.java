@@ -58,7 +58,7 @@ import java.util.Stack;
 import principal.Funcionário;
 import principal.Grupo;
 
-public class InterfaceGrafica extends JFrame {
+public class InterfacePrincipal extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField UserField;
 	private JTextField CampoNome;
@@ -76,7 +76,7 @@ public class InterfaceGrafica extends JFrame {
 				try 
 				{
 
-					InterfaceGrafica frame = new InterfaceGrafica();
+					InterfacePrincipal frame = new InterfacePrincipal();
 					frame.setVisible(true);
 
 				} catch (Exception e) {
@@ -90,7 +90,7 @@ public class InterfaceGrafica extends JFrame {
 	 * Create the frame.
 	 * @return 
 	 */
-	public  InterfaceGrafica() {
+	public  InterfacePrincipal() {
 		setBackground(Color.LIGHT_GRAY);
 		setTitle("Gerenciador de Metas");
 		setForeground(Color.LIGHT_GRAY);
@@ -230,7 +230,7 @@ public class InterfaceGrafica extends JFrame {
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && funcionario.listadefuncionarios.get(usuario).isCoordinator()){
 							
 				
-						Interface2 frame2 = new Interface2(usuario);
+						InterfaceGrupoCoordenador frame2 = new InterfaceGrupoCoordenador(usuario);
 						frame2.setVisible(true);
 					
 						passwordField.setText("");
@@ -243,7 +243,7 @@ public class InterfaceGrafica extends JFrame {
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && !funcionario.listadefuncionarios.get(usuario).isCoordinator()){
 						passwordField.setText("");
 						UserField.setText("");
-						Interface3 frame3 = new Interface3();
+						InterfaceGruposFuncionario frame3 = new InterfaceGruposFuncionario();
 						frame3.setVisible(true);
 					}
 					
