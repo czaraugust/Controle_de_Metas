@@ -2,11 +2,11 @@ package principal;
 
 public class Metas {
 	String grupo, meta, data, criador;
-	int porcentagem;
+	String porcentagem;
 
 
 
-	public Metas(String grupo, String meta, String data, String criador,  int porcentagem) {
+	public Metas(String grupo, String meta, String data, String criador,  String porcentagem) {
 		super();
 		this.grupo = grupo;
 		this.meta = meta;
@@ -17,10 +17,10 @@ public class Metas {
 
 	}
 	
-	public int getPorcentagem() {
+	public String getPorcentagem() {
 		return porcentagem;
 	}
-	public void setPorcentagem(int porcentagem) {
+	public void setPorcentagem(String porcentagem) {
 		this.porcentagem = porcentagem;
 	}
 	public String getMeta() {

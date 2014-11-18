@@ -72,7 +72,7 @@ public  class Grupo implements GrupoInterface{
 
 	void addMeta(String grupo, String meta, String data, String criador){
 
-		Metas metas = new Metas (grupo, meta, data, criador, 0);
+		Metas metas = new Metas (grupo, meta, data, criador, "0");
 		listadegrupos.get(grupo).getListademetas().put(meta, metas);
 
 	}

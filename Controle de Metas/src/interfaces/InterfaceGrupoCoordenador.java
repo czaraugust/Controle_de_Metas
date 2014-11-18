@@ -155,7 +155,7 @@ public class InterfaceGrupoCoordenador extends JFrame {
 		panel.add(txtpnNomeDoGrupo);
 		txtpnNomeDoGrupo.setBorder(new LineBorder(new Color(0, 0, 0)));
 
-		JTextPane TextoUsuario = new JTextPane();
+		JTextPane TextoUsuario =  new JTextPane();
 		TextoUsuario.setBounds(63, 11, 165, 20);
 		TextoUsuario.setBackground(SystemColor.menu);
 		panel.add(TextoUsuario);
