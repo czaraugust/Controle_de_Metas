@@ -224,10 +224,12 @@ public class InterfaceGrafica extends JFrame {
 						passwordField.setText("");
 						UserField.setText("");
 					}
+					
+						
+					
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && funcionario.listadefuncionarios.get(usuario).isCoordinator()){
 							
-						//AQUI
-						//AQUI
+				
 						Interface2 frame2 = new Interface2(usuario);
 						frame2.setVisible(true);
 					
@@ -237,6 +239,7 @@ public class InterfaceGrafica extends JFrame {
 						
 						
 					}
+					
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && !funcionario.listadefuncionarios.get(usuario).isCoordinator()){
 						passwordField.setText("");
 						UserField.setText("");
@@ -251,9 +254,10 @@ public class InterfaceGrafica extends JFrame {
 						UserField.setText("");
 						
 					}
-					
-					
 				}
+					
+					
+				
 				catch (NumberFormatException e){
 					JOptionPane.showMessageDialog(null, "Senha inválida. Digite apenas números");
 					passwordField.setText("");

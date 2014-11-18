@@ -7,13 +7,13 @@ public  class Grupo implements GrupoInterface{
 
 
 	private String nome;
-	private ArrayList <Funcionário> membros;
+	private HashMap <String ,Funcionário> membros;
 	private HashMap<String, Metas>  listademetas;
 
 
 	public Grupo(String nome) {
 		this.nome = nome;
-		this.membros = new ArrayList<>();
+		this.membros = new HashMap<String, Funcionário>();
 		this.listademetas = new HashMap<>();
 		
 
@@ -27,20 +27,22 @@ public  class Grupo implements GrupoInterface{
 	}
 
 
-	public ArrayList<Funcionário> getArray() {
+	public HashMap<String, Funcionário> getArray() {
 		return membros;
 	}
 
 	public HashMap<String, Metas> getListademetas() {
 		return listademetas;
 	}
+	
+	
 	public void criarGrupo(String nome, Funcionário funcionario){	
 		if (listadegrupos.containsKey(nome)){
-		
+					
 		}
 		else{
 			Grupo grupo = new Grupo(nome);
-			grupo.membros.add(funcionario);
+			grupo.membros.put(nome, funcionario);
 			listadegrupos.put(nome, grupo);
 
 		}
@@ -62,7 +64,9 @@ public  class Grupo implements GrupoInterface{
 	}
 
 	void addMembro (Funcionário membro, Grupo grupo){
-		listadegrupos.get(grupo.getNome()).getArray().add(membro);
+		
+		
+		listadegrupos.get(grupo.getNome()).getArray().put(membro.getNome(),membro );
 	}
 
 	void removeMembro(Funcionário membro, Grupo grupo){

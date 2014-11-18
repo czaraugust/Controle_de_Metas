@@ -104,6 +104,10 @@ public class Interface2 extends JFrame {
 
 
 		JButton btnNewButton = new JButton("Abrir Grupo");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton.setBounds(10, 288, 109, 23);
 		panel.add(btnNewButton);
 
@@ -130,7 +134,8 @@ public class Interface2 extends JFrame {
 
 		panel.add(table);
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(290, 71, 154, 169);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBounds(277, 45, 154, 196);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -145,83 +150,54 @@ public class Interface2 extends JFrame {
 		panel_1.add(Camponome);
 		Camponome.setColumns(10);
 
+
+
 		Grupo grupo = new Grupo(nome);
 		DefaultTableModel val = (DefaultTableModel) table.getModel();
 		if (grupo.listadegrupos.isEmpty() == false){
 
-
-
-
-
-		Set<String> chaves = grupo.listadegrupos.keySet();
+			Set<String> chaves = grupo.listadegrupos.keySet();
 			for (String chave : chaves){
-				
-				val.addRow(new String []{grupo.listadegrupos.get(chave).getNome()});
-				
+				if (grupo.listadegrupos.get(chave).getArray().containsValue(usuario)){
+					val.addRow(new String []{grupo.listadegrupos.get(chave).getNome()});
 
+
+				}
 			}
 		}
 
+
 		JButton btnCriarNovoGrupo = new JButton("Criar Novo Grupo");
-		btnCriarNovoGrupo.setBounds(10, 115, 138, 23);
+		btnCriarNovoGrupo.setBounds(10, 122, 134, 23);
+		btnCriarNovoGrupo.setVisible(true);
 		panel_1.add(btnCriarNovoGrupo);
 		btnCriarNovoGrupo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nome = Camponome.getText().trim();
-			
-				
+
+
 				if (grupo.listadegrupos.containsValue(nome) == false){
-				val.addRow(new String []{nome});
-				Funcionário func = new Funcionário("", 0, false, "");
+					val.addRow(new String []{nome});
+					Funcionário func = new Funcionário("", 0, false, "");
 
-				func = func.listadefuncionarios.get(usuario);
+					func = func.listadefuncionarios.get(usuario);
 
-				grupo.criarGrupo(nome, func);
-				JOptionPane.showMessageDialog(null, "Grupo Criado com sucesso");
+					grupo.criarGrupo(nome, func);
+					JOptionPane.showMessageDialog(null, "Grupo Criado com sucesso");
 
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Grupo já existente");
 				}
 
-		
+
 				Camponome.setText("");
 
 
 			}
 		});
-		/*table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nome do Grupo"
-			}
-		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(116);
-			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			table.setBorder(new LineBorder(new Color(0, 0, 0)));
-			table.setBackground(SystemColor.menu);
-			contentPane.add(table);*/
-
-		/*if (!grupo.listadegrupos.isEmpty()){
-				Set<String> chaves = grupo.listadegrupos.keySet();
-				for (String chave : chaves)  
-				{
-				table.setModel(new DefaultTableModel(
-						new Object[][] {
-						},
-						new String[] {
-							grupo.listadegrupos.get(chave).getNome(), "coordenador"
-						}
-					));
-
-				}
-
-			}*/
-
-
-		//System.out.println("Nomedentro" + InterfaceGrafica.logins.pop());
 
 
 	}
+	
 }
