@@ -1,7 +1,6 @@
 package interfaces;
 
 import java.awt.BorderLayout;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -23,6 +22,8 @@ import principal.Funcionário;
 
 import java.awt.SystemColor;
 import java.awt.Font;
+import java.util.Set;
+
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
@@ -73,7 +74,7 @@ public class Interface2 extends JFrame {
 		table = new JTable();
 		table.setColumnSelectionAllowed(true);
 		table.setEnabled(false);
-		table.setBounds(20, 64, 228, 208);
+		table.setBounds(20, 71, 228, 218);
 		
 		
 
@@ -84,36 +85,35 @@ public class Interface2 extends JFrame {
 		panel.setLayout(null);
 
 		JTextPane txtpnGrupos = new JTextPane();
-		txtpnGrupos.setBounds(98, 6, 46, 22);
+		txtpnGrupos.setBounds(10, 11, 71, 23);
 		panel.add(txtpnGrupos);
 		txtpnGrupos.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtpnGrupos.setBackground(SystemColor.menu);
-		txtpnGrupos.setText("Grupos");
+		txtpnGrupos.setText("Grupos de");
 
 
 		JButton btnNewButton = new JButton("Abrir Grupo");
-		btnNewButton.setBounds(10, 275, 109, 23);
+		btnNewButton.setBounds(10, 288, 109, 23);
 		panel.add(btnNewButton);
 
 		JButton btnExcluirGrupo = new JButton("Excluir Grupo");
-		btnExcluirGrupo.setBounds(129, 275, 118, 23);
+		btnExcluirGrupo.setBounds(129, 288, 118, 23);
 		panel.add(btnExcluirGrupo);
 		
 		
 		System.out.println("STRING" +usuario );
 		JTextPane txtpnNomeDoGrupo = new JTextPane();
 		txtpnNomeDoGrupo.setBackground(SystemColor.menu);
-		txtpnNomeDoGrupo.setText(" Nome do Grupo");
-		txtpnNomeDoGrupo.setBounds(10, 30, 103, 20);
+		txtpnNomeDoGrupo.setText("                       Nome do Grupo");
+		txtpnNomeDoGrupo.setBounds(10, 35, 196, 20);
 		panel.add(txtpnNomeDoGrupo);
 		txtpnNomeDoGrupo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JTextPane txtpnCoordenador = new JTextPane();
-		txtpnCoordenador.setBackground(SystemColor.menu);
-		txtpnCoordenador.setText("   Coordenador");
-		txtpnCoordenador.setBounds(108, 30, 130, 20);
-		panel.add(txtpnCoordenador);
-		txtpnCoordenador.setBorder(new LineBorder(new Color(0, 0, 0)));
+		JTextPane TextoUsuario = new JTextPane();
+		TextoUsuario.setBackground(SystemColor.menu);
+		TextoUsuario.setBounds(79, 11, 109, 20);
+		panel.add(TextoUsuario);
+		TextoUsuario.setText(usuario);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(290, 11, 154, 322);
@@ -141,8 +141,9 @@ public class Interface2 extends JFrame {
 		CoordenadordoGrupo.setText("Coordenador");
 		CoordenadordoGrupo.setBounds(22, 105, 88, 20);
 		panel_1.add(CoordenadordoGrupo);
-
-
+		
+		Grupo grupo = new Grupo(nome);
+		
 		JButton btnCriarNovoGrupo = new JButton("Criar Novo Grupo");
 		btnCriarNovoGrupo.setBounds(10, 201, 138, 23);
 		panel_1.add(btnCriarNovoGrupo);
@@ -153,8 +154,13 @@ public class Interface2 extends JFrame {
 				
 				DefaultTableModel val = (DefaultTableModel) table.getModel();
 				val.addRow(new String []{nome, coordenador});
-				Grupo grupo = new Grupo(nome);
-				///grupo.criarGrupo(nome, funcionario);
+				Funcionário func = new Funcionário("", 0, false, "");
+
+				func = func.listadefuncionarios.get(usuario);
+
+				System.out.println("Nome " + func.getNome());
+				
+				grupo.criarGrupo(nome, func);
 				
 			
 				
@@ -165,33 +171,37 @@ public class Interface2 extends JFrame {
 			}
 		});
 		table.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					nome, "coordenador"
-				}
-			));
-			table.getColumnModel().getColumn(1).setPreferredWidth(99);
+			new Object[][] {
+			},
+			new String[] {
+				"Nome do Grupo"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(116);
 			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			table.setBorder(new LineBorder(new Color(0, 0, 0)));
 			table.setBackground(SystemColor.menu);
 			contentPane.add(table);
+			
+		/*if (!grupo.listadegrupos.isEmpty()){
+				Set<String> chaves = grupo.listadegrupos.keySet();
+				for (String chave : chaves)  
+				{
+				table.setModel(new DefaultTableModel(
+						new Object[][] {
+						},
+						new String[] {
+							grupo.listadegrupos.get(chave).getNome(), "coordenador"
+						}
+					));
+
+				}
+				
+			}*/
 		
 
 		//System.out.println("Nomedentro" + InterfaceGrafica.logins.pop());
 
 
 	}
-
-	/*public void envia (String nome){
-	textNomeUsuario.setText(nome);
-	nome = textNomeUsuario.getText();
-	System.out.println("Nome" +nome);
-
-	}	
-
-	public String getNome(){
-		return  nome;
-
-	}*/
 }

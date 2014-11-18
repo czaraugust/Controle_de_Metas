@@ -16,7 +16,6 @@ public  class Grupo implements GrupoInterface{
 		this.membros = new ArrayList<>();
 		this.listademetas = new HashMap<>();
 		
-		System.out.println("NEW GROUP!");
 
 	}
 	public String getNome() {
