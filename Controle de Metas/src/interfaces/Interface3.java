@@ -5,17 +5,29 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextPane;
+
 import java.awt.SystemColor;
 import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+
+import principal.Grupo;
+
 import java.awt.Color;
+import java.util.Set;
 
 public class Interface3 extends JFrame {
 
 	private JPanel contentPane;
+	private JTable table;
+	private String usuario;
+	public DefaultTableModel modelo;
 
 	/**
 	 * Launch the application.
@@ -43,6 +55,33 @@ public class Interface3 extends JFrame {
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		//contentPane.add(table);
+		
+		modelo = new DefaultTableModel();  
+		modelo.setColumnIdentifiers(new String []{"Nome do Grupo"});
+		table = new JTable(modelo);
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		table.setBackground(SystemColor.menu);
+		table.setBounds(106, 76, 215, 166);
+		contentPane.add(table);
+		
+		Grupo grupo = new Grupo("");
+		DefaultTableModel val = (DefaultTableModel) table.getModel();
+		if (grupo.listadegrupos.isEmpty() == false){
+
+
+
+
+
+		Set<String> chaves = grupo.listadegrupos.keySet();
+			for (String chave : chaves){
+				
+				val.addRow(new String []{grupo.listadegrupos.get(chave).getNome()});
+				
+
+			}
+		}
 		
 		JTextPane txtpnGrupos = new JTextPane();
 		txtpnGrupos.setBounds(181, 11, 58, 20);
@@ -56,21 +95,15 @@ public class Interface3 extends JFrame {
 		contentPane.add(btnAbrirGrupo);
 		
 		JTextPane txtpnNome = new JTextPane();
-		txtpnNome.setBounds(77, 34, 114, 23);
+		txtpnNome.setBounds(106, 42, 215, 23);
 		txtpnNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtpnNome.setBackground(SystemColor.menu);
-		txtpnNome.setText(" Nome do Grupo");
+		txtpnNome.setText("               Nome do Grupo");
 		txtpnNome.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		contentPane.add(txtpnNome);
 		
-		JTextPane txtpnCoordenadorDoGrupo = new JTextPane();
-		txtpnCoordenadorDoGrupo.setBackground(SystemColor.menu);
-		txtpnCoordenadorDoGrupo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtpnCoordenadorDoGrupo.setText(" Coordenador do grupo");
-		txtpnCoordenadorDoGrupo.setBounds(191, 34, 161, 23);
-		txtpnCoordenadorDoGrupo.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane.add(txtpnCoordenadorDoGrupo);
+		
 	}
 
 }

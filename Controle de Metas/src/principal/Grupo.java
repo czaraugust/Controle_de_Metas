@@ -36,14 +36,13 @@ public  class Grupo implements GrupoInterface{
 	}
 	public void criarGrupo(String nome, Funcionário funcionario){	
 		if (listadegrupos.containsKey(nome)){
-			System.err.println("Grupo já existente! Digite outro nome!");	
+		
 		}
 		else{
 			Grupo grupo = new Grupo(nome);
 			grupo.membros.add(funcionario);
 			listadegrupos.put(nome, grupo);
 
-			System.out.println("Grupo criado com sucesso!");
 		}
 
 	}

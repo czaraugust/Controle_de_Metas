@@ -177,7 +177,7 @@ public class InterfaceGrafica extends JFrame {
 
 				CampoSenha.setText("");
 
-
+					
 
 
 			}
@@ -230,7 +230,7 @@ public class InterfaceGrafica extends JFrame {
 						//AQUI
 						Interface2 frame2 = new Interface2(usuario);
 						frame2.setVisible(true);
-						System.out.println("tamanho" +funcionario.listadefuncionarios.size());
+					
 						passwordField.setText("");
 						UserField.setText("");
 						
@@ -245,7 +245,7 @@ public class InterfaceGrafica extends JFrame {
 					}
 					
 					
-					else {
+					else if (funcionario.listadefuncionarios.get(usuario).getSenha() != senha){
 						JOptionPane.showMessageDialog(null, "Senha ou usuário incorreto!");
 						passwordField.setText("");
 						UserField.setText("");
@@ -258,6 +258,11 @@ public class InterfaceGrafica extends JFrame {
 					JOptionPane.showMessageDialog(null, "Senha inválida. Digite apenas números");
 					passwordField.setText("");
 
+				}
+				catch (NullPointerException e){
+					JOptionPane.showMessageDialog(null, "Senha ou usuário incorreto!");
+					passwordField.setText("");
+					UserField.setText("");
 				}
 			}
 

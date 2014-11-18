@@ -51,6 +51,8 @@ public class Funcionário {
 			listadefuncionarios.put(funcionario.getLogin(), funcionario);
 			texto ="Cadastro realizado com sucesso!";
 		}
+		
+		
 		return texto;
 
 	}
