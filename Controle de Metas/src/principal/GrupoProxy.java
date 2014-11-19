@@ -2,7 +2,7 @@ package principal;
 
 import java.util.HashMap;
 
-public class GrupoProxy implements GrupoInterface{
+public class GrupoProxy implements GrupoProxyInterface{
 	private Grupo grupo;
 	
 	@Override

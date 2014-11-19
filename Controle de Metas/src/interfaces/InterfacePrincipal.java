@@ -241,10 +241,12 @@ public class InterfacePrincipal extends JFrame {
 					}
 					
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && !funcionario.listadefuncionarios.get(usuario).isCoordinator()){
+						
+						InterfaceGruposFuncionario frame3 = new InterfaceGruposFuncionario(usuario);
+						frame3.setVisible(true);
+						
 						passwordField.setText("");
 						UserField.setText("");
-						InterfaceGruposFuncionario frame3 = new InterfaceGruposFuncionario();
-						frame3.setVisible(true);
 					}
 					
 					

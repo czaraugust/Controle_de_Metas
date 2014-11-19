@@ -49,7 +49,7 @@ public class InterfaceGrupoCoordenador extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -60,7 +60,7 @@ public class InterfaceGrupoCoordenador extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
@@ -115,7 +115,7 @@ public class InterfaceGrupoCoordenador extends JFrame {
 				catch(ArrayIndexOutOfBoundsException e){
 					JOptionPane.showMessageDialog(null, "Selecione uma linha!");
 				}
-				System.out.println("SELECIONADO" +selecao);
+			
 				
 				InterfaceInternaGruposCoordenador framegrupo = new InterfaceInternaGruposCoordenador(usuario, selecao);
 				framegrupo.setVisible(true);
@@ -131,7 +131,12 @@ public class InterfaceGrupoCoordenador extends JFrame {
 		btnExcluirGrupo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int selecionada = table.getSelectedRow();
+				try{
 				selecao = table.getValueAt(selecionada, 0).toString();
+				}
+				catch(ArrayIndexOutOfBoundsException e){
+					JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+				}
 				modelo.removeRow(selecionada);
 				grupo.deletarGrupo(selecao);
 				JOptionPane.showMessageDialog(null, "Grupo deletado!");
@@ -156,7 +161,8 @@ public class InterfaceGrupoCoordenador extends JFrame {
 		txtpnNomeDoGrupo.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		JTextPane TextoUsuario =  new JTextPane();
-		TextoUsuario.setBounds(63, 11, 165, 20);
+		TextoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		TextoUsuario.setBounds(32, 11, 196, 20);
 		TextoUsuario.setBackground(SystemColor.menu);
 		panel.add(TextoUsuario);
 		TextoUsuario.setText(usuario);
@@ -166,7 +172,7 @@ public class InterfaceGrupoCoordenador extends JFrame {
 		panel.add(table);
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(277, 45, 154, 196);
+		panel_1.setBounds(290, 51, 154, 282);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -202,6 +208,37 @@ public class InterfaceGrupoCoordenador extends JFrame {
 		btnCriarNovoGrupo.setBounds(10, 122, 134, 23);
 		btnCriarNovoGrupo.setVisible(true);
 		panel_1.add(btnCriarNovoGrupo);
+		
+		JButton btnDesfazerExcluir = new JButton("Desfazer excluir");
+		btnDesfazerExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Grupo group = new Grupo("");
+				try {
+				group = group.desfazer();
+				if (group != null){
+					val.addRow(new String []{group.getNome()});
+					grupo.listadegrupos.put(group.getNome(), group);
+					
+
+
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Não há ações para serem desfeitas!");
+
+				}
+				}
+				catch (NullPointerException e){
+					JOptionPane.showMessageDialog(null, "Não há ações para serem desfeitas!");
+				}
+				
+				
+				
+			}
+		});
+		btnDesfazerExcluir.setBounds(290, 11, 154, 23);
+		contentPane.add(btnDesfazerExcluir);
+		
+		
 		btnCriarNovoGrupo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nome = Camponome.getText().trim();
@@ -210,10 +247,9 @@ public class InterfaceGrupoCoordenador extends JFrame {
 				if (!grupo.listadegrupos.containsKey(nome)){
 					val.addRow(new String []{nome});
 					Funcionário func = new Funcionário("", 0, false, "");
-
 					func = func.listadefuncionarios.get(usuario);
-
 					grupo.criarGrupo(nome, func);
+					
 					JOptionPane.showMessageDialog(null, "Grupo Criado com sucesso");
 
 				}
@@ -230,5 +266,4 @@ public class InterfaceGrupoCoordenador extends JFrame {
 
 
 	}
-	
 }

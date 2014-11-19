@@ -1,21 +1,22 @@
 package principal;
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.Set;
-public  class Grupo implements GrupoInterface{
+public  class Grupo implements GrupoProxyInterface{
 	static public HashMap<String, Grupo>  listadegrupos = new HashMap<String, Grupo>();
 
 
 	private String nome;
 	private HashMap <String ,Funcionário> membros;
-	private HashMap<String, Metas>  listademetas;
+	private HashMap<String, MetasSubject>  listademetas;
+	private GrupoCareTaker caretaker;
 
 
 	public Grupo(String nome) {
 		this.nome = nome;
 		this.membros = new HashMap<String, Funcionário>();
 		this.listademetas = new HashMap<>();
-		
+		this.caretaker = new GrupoCareTaker();
+
 
 	}
 	public String getNome() {
@@ -31,58 +32,65 @@ public  class Grupo implements GrupoInterface{
 		return membros;
 	}
 
-	public HashMap<String, Metas> getListademetas() {
+	public HashMap<String, MetasSubject> getListademetas() {
 		return listademetas;
 	}
-	
-	
+
+
 	public void criarGrupo(String nome, Funcionário funcionario){	
 		if (listadegrupos.containsKey(nome)){
-					
+
 		}
 		else{
 			Grupo grupo = new Grupo(nome);
 			listadegrupos.put(nome, grupo);
-			
+
 			addMembro(funcionario, grupo);
-	
-			
+
+
 
 		}
 
 	}
 
 	public void deletarGrupo(String nome){
-	
-			listadegrupos.remove(nome);
+		Grupo grupo = new Grupo(""); 
+		grupo =	listadegrupos.get(nome);
+		caretaker.adicionarMemento(new GrupoMemento(grupo));
+		listadegrupos.remove(nome); 
 		
-	
-	
+
+
 	}
 
-	void addMembro (Funcionário membro, Grupo grupo){
-		
-		
+	public	void addMembro (Funcionário membro, Grupo grupo){
+
+
 		listadegrupos.get(grupo.getNome()).getArray().put(membro.getNome(),membro );
 	}
 
-	void removeMembro(Funcionário membro, Grupo grupo){
-		listadegrupos.get(grupo.getNome()).getArray().remove(membro);
+	public void removeMembro(Funcionário membro, String grupo){
+		listadegrupos.get(grupo).getArray().remove(membro);
 	}
 
-	void addMeta(String grupo, String meta, String data, String criador){
+	public	void addMeta(String grupo, String meta, String data, String criador){
 
-		Metas metas = new Metas (grupo, meta, data, criador, "0");
-		listadegrupos.get(grupo).getListademetas().put(meta, metas);
+		MetasSubject metasSubject = new MetasSubject (grupo, meta, data, criador, "0");
+		listadegrupos.get(grupo).getListademetas().put(meta, metasSubject);
 
 	}
-	void excluiMetas (String meta, String grupo){
+	public  void excluiMetas (String meta, String grupo){
 
 		listadegrupos.get(grupo).getListademetas().remove(meta);
 	}
+	public Grupo  desfazer(){
+		
+		return caretaker.getUltimoEstado().getGrupoSalvo();
+		
+	}
 	@Override
 	public HashMap <String , Grupo> imprimirListaDeGrupos (Funcionário funcionario, int senha){
-		
+
 		Set<String> chaves = listadegrupos.keySet();
 		HashMap<String , Grupo> auxiliar = new HashMap<>();
 
@@ -94,7 +102,7 @@ public  class Grupo implements GrupoInterface{
 
 			}              
 		}  
-		
+
 		return auxiliar;
 
 	}
