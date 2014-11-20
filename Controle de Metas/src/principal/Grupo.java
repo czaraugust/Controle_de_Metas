@@ -2,20 +2,22 @@ package principal;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Set;
-public  class Grupo implements GrupoInterface{
+public  class Grupo implements GrupoProxyInterface{
 	static public HashMap<String, Grupo>  listadegrupos = new HashMap<String, Grupo>();
 
 
 	private String nome;
-	private ArrayList <Funcionário> membros;
+	private HashMap <String ,Funcionário> membros;
 	private HashMap<String, Metas>  listademetas;
+	GrupoCareTaker caretaker;
 
 
 	public Grupo(String nome) {
 		this.nome = nome;
-		this.membros = new ArrayList<>();
+		this.membros = new HashMap<String, Funcionário>();
 		this.listademetas = new HashMap<>();
-		
+		caretaker = new GrupoCareTaker();
+
 
 	}
 	public String getNome() {
@@ -27,62 +29,68 @@ public  class Grupo implements GrupoInterface{
 	}
 
 
-	public ArrayList<Funcionário> getArray() {
+	public HashMap<String, Funcionário> getArray() {
 		return membros;
 	}
 
 	public HashMap<String, Metas> getListademetas() {
 		return listademetas;
 	}
+
+
 	public void criarGrupo(String nome, Funcionário funcionario){	
 		if (listadegrupos.containsKey(nome)){
-			System.err.println("Grupo já existente! Digite outro nome!");	
+
 		}
 		else{
 			Grupo grupo = new Grupo(nome);
-			grupo.membros.add(funcionario);
 			listadegrupos.put(nome, grupo);
 
-			System.out.println("Grupo criado com sucesso!");
+			addMembro(funcionario, grupo);
+
+
+
 		}
 
 	}
 
-	public String deletarGrupo(String nome){
-		String texto =null;
-		
-		//if (listadegrupos.containsKey(nome)){
-			listadegrupos.remove(nome);
-			texto ="Grupo removido com sucesso!";
-	/*	}
-		else{		
-			"Grupo informado não existe!";
+	public void deletarGrupo(String nome){
+		caretaker.adicionarMemento(new GrupoMemento(listadegrupos.get(nome)));
+		listadegrupos.remove(nome); 
+		System.out.println("Tamanho" +caretaker.estados.size());
+		System.out.println("Nome" +caretaker.estados.get(caretaker.estados.size() -1).getGrupoSalvo().getNome());
 
-		}*/
-		return texto;
+
 	}
 
-	void addMembro (Funcionário membro, Grupo grupo){
-		listadegrupos.get(grupo.getNome()).getArray().add(membro);
+	public	void addMembro (Funcionário membro, Grupo grupo){
+
+
+		listadegrupos.get(grupo.getNome()).getArray().put(membro.getNome(),membro );
 	}
 
-	void removeMembro(Funcionário membro, Grupo grupo){
-		listadegrupos.get(grupo.getNome()).getArray().remove(membro);
+	public void removeMembro(Funcionário membro, String grupo){
+		listadegrupos.get(grupo).getArray().remove(membro);
 	}
 
-	void addMeta(String grupo, String meta, String data, String criador){
+	public	void addMeta(String grupo, String meta, String data, String criador){
 
-		Metas metas = new Metas (grupo, meta, data, criador, 0);
+		Metas metas = new Metas (grupo, meta, data, criador, "0");
 		listadegrupos.get(grupo).getListademetas().put(meta, metas);
 
 	}
-	void excluiMetas (String meta, String grupo){
+	public  void excluiMetas (String meta, String grupo){
 
 		listadegrupos.get(grupo).getListademetas().remove(meta);
 	}
+	public Grupo desfazer(){
+		Grupo grupo;
+		grupo = caretaker.getUltimoEstado().getGrupoSalvo();
+		return grupo;
+	}
 	@Override
 	public HashMap <String , Grupo> imprimirListaDeGrupos (Funcionário funcionario, int senha){
-		
+
 		Set<String> chaves = listadegrupos.keySet();
 		HashMap<String , Grupo> auxiliar = new HashMap<>();
 
@@ -94,7 +102,7 @@ public  class Grupo implements GrupoInterface{
 
 			}              
 		}  
-		
+
 		return auxiliar;
 
 	}

@@ -58,7 +58,7 @@ import java.util.Stack;
 import principal.Funcionário;
 import principal.Grupo;
 
-public class InterfaceGrafica extends JFrame {
+public class InterfacePrincipal extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField UserField;
 	private JTextField CampoNome;
@@ -76,7 +76,7 @@ public class InterfaceGrafica extends JFrame {
 				try 
 				{
 
-					InterfaceGrafica frame = new InterfaceGrafica();
+					InterfacePrincipal frame = new InterfacePrincipal();
 					frame.setVisible(true);
 
 				} catch (Exception e) {
@@ -90,7 +90,7 @@ public class InterfaceGrafica extends JFrame {
 	 * Create the frame.
 	 * @return 
 	 */
-	public  InterfaceGrafica() {
+	public  InterfacePrincipal() {
 		setBackground(Color.LIGHT_GRAY);
 		setTitle("Gerenciador de Metas");
 		setForeground(Color.LIGHT_GRAY);
@@ -177,7 +177,7 @@ public class InterfaceGrafica extends JFrame {
 
 				CampoSenha.setText("");
 
-
+					
 
 
 			}
@@ -224,40 +224,51 @@ public class InterfaceGrafica extends JFrame {
 						passwordField.setText("");
 						UserField.setText("");
 					}
+					
+						
+					
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && funcionario.listadefuncionarios.get(usuario).isCoordinator()){
 							
-						//AQUI
-						//AQUI
-						Interface2 frame2 = new Interface2(usuario);
+				
+						InterfaceGrupoCoordenador frame2 = new InterfaceGrupoCoordenador(usuario);
 						frame2.setVisible(true);
-						System.out.println("tamanho" +funcionario.listadefuncionarios.size());
+					
 						passwordField.setText("");
 						UserField.setText("");
 						
 						
 						
 					}
+					
 					else if (funcionario.listadefuncionarios.get(usuario).getSenha() == senha && !funcionario.listadefuncionarios.get(usuario).isCoordinator()){
+						
+						InterfaceGruposFuncionario frame3 = new InterfaceGruposFuncionario(usuario);
+						frame3.setVisible(true);
+						
 						passwordField.setText("");
 						UserField.setText("");
-						Interface3 frame3 = new Interface3();
-						frame3.setVisible(true);
 					}
 					
 					
-					else {
+					else if (funcionario.listadefuncionarios.get(usuario).getSenha() != senha){
 						JOptionPane.showMessageDialog(null, "Senha ou usuário incorreto!");
 						passwordField.setText("");
 						UserField.setText("");
 						
 					}
-					
-					
 				}
+					
+					
+				
 				catch (NumberFormatException e){
 					JOptionPane.showMessageDialog(null, "Senha inválida. Digite apenas números");
 					passwordField.setText("");
 
+				}
+				catch (NullPointerException e){
+					JOptionPane.showMessageDialog(null, "Senha ou usuário incorreto!");
+					passwordField.setText("");
+					UserField.setText("");
 				}
 			}
 
