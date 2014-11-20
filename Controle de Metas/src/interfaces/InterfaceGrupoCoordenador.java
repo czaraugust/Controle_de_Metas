@@ -131,7 +131,16 @@ public class InterfaceGrupoCoordenador extends JFrame {
 		btnExcluirGrupo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int selecionada = table.getSelectedRow();
+<<<<<<< HEAD
 				selecao = table.getValueAt(selecionada, 0).toString();
+=======
+				try{
+				selecao = table.getValueAt(selecionada, 0).toString();
+				}
+				catch(ArrayIndexOutOfBoundsException e){
+					JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+				}
+>>>>>>> origin/master
 				modelo.removeRow(selecionada);
 				grupo.deletarGrupo(selecao);
 				JOptionPane.showMessageDialog(null, "Grupo deletado!");
@@ -208,12 +217,21 @@ public class InterfaceGrupoCoordenador extends JFrame {
 		btnDesfazerExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Grupo group = new Grupo("");
+<<<<<<< HEAD
 				group = group.desfazer();
 				if (group != null){
 					val.addRow(new String []{group.getNome()});
 					Funcionário func = new Funcionário("", 0, false, "");
 					func = func.listadefuncionarios.get(usuario);
 					group.criarGrupo(group.getNome(), func);
+=======
+				try {
+				group = group.desfazer();
+				if (group != null){
+					val.addRow(new String []{group.getNome()});
+					grupo.listadegrupos.put(group.getNome(), group);
+					
+>>>>>>> origin/master
 
 
 				}
@@ -221,6 +239,15 @@ public class InterfaceGrupoCoordenador extends JFrame {
 					JOptionPane.showMessageDialog(null, "Não há ações para serem desfeitas!");
 
 				}
+<<<<<<< HEAD
+=======
+				}
+				catch (NullPointerException e){
+					JOptionPane.showMessageDialog(null, "Não há ações para serem desfeitas!");
+				}
+				
+				
+>>>>>>> origin/master
 				
 			}
 		});

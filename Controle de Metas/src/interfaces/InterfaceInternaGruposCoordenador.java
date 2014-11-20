@@ -29,6 +29,10 @@ import principal.Grupo;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Set;
+<<<<<<< HEAD
+=======
+import javax.swing.JEditorPane;
+>>>>>>> origin/master
 public class InterfaceInternaGruposCoordenador extends JFrame {
 
 	private JPanel contentPane;
@@ -71,10 +75,17 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 		modelomebros = new DefaultTableModel();  
 		modelomebros.setColumnIdentifiers(new String []{"Membros"});
 		tablemembros = new JTable(modelomebros);
+<<<<<<< HEAD
 		tablemembros.setBorder(new LineBorder(new Color(0, 0, 0)));
 		tablemembros.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		tablemembros.setBackground(SystemColor.menu);
 		tablemembros.setBounds(10, 62, 218, 148);
+=======
+		tablemembros.setBounds(10, 60, 198, 148);
+		tablemembros.setBorder(new LineBorder(new Color(0, 0, 0)));
+		tablemembros.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		tablemembros.setBackground(SystemColor.menu);
+>>>>>>> origin/master
 
 		modelometas = new DefaultTableModel();  
 		modelometas.setColumnIdentifiers(new String []{"Metas", "Data", "%"});
@@ -82,7 +93,11 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 		tablemetas.setBorder(new LineBorder(new Color(0, 0, 0)));
 		tablemetas.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		tablemetas.setBackground(SystemColor.menu);
+<<<<<<< HEAD
 		tablemetas.setBounds(10, 58, 269, 175);
+=======
+		tablemetas.setBounds(10, 58, 295, 175);
+>>>>>>> origin/master
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 585, 476);
@@ -107,7 +122,11 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 			}
 		}
 		JPanel panelmetas = new JPanel();
+<<<<<<< HEAD
 		panelmetas.setBounds(10, 40, 289, 375);
+=======
+		panelmetas.setBounds(10, 40, 315, 375);
+>>>>>>> origin/master
 		panelmetas.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panelmetas);
 		panelmetas.setLayout(null);
@@ -128,7 +147,11 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 				}				
 			}
 		});
+<<<<<<< HEAD
 		btnAddMeta.setBounds(27, 341, 99, 23);
+=======
+		btnAddMeta.setBounds(10, 341, 89, 23);
+>>>>>>> origin/master
 		panelmetas.add(btnAddMeta);
 
 		JButton btnExcluiMeta = new JButton("Exclui Meta");
@@ -142,11 +165,19 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 				JOptionPane.showMessageDialog(null, "Meta deletada!");
 			}
 		});
+<<<<<<< HEAD
 		btnExcluiMeta.setBounds(158, 341, 103, 23);
 		panelmetas.add(btnExcluiMeta);
 
 		JTextPane txtpnMetas = new JTextPane();
 		txtpnMetas.setBounds(118, 11, 53, 23);
+=======
+		btnExcluiMeta.setBounds(99, 341, 99, 23);
+		panelmetas.add(btnExcluiMeta);
+
+		JTextPane txtpnMetas = new JTextPane();
+		txtpnMetas.setBounds(129, 11, 53, 23);
+>>>>>>> origin/master
 		txtpnMetas.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtpnMetas.setBackground(SystemColor.menu);
 		txtpnMetas.setText("METAS");
@@ -178,26 +209,65 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 		JTextPane txtpnMeta_1 = new JTextPane();
 		txtpnMeta_1.setBackground(SystemColor.menu);
 		txtpnMeta_1.setText("  Meta");
+<<<<<<< HEAD
 		txtpnMeta_1.setBounds(10, 37, 89, 20);
 		panelmetas.add(txtpnMeta_1);
 		txtpnMeta_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+=======
+		txtpnMeta_1.setBounds(29, 37, 60, 20);
+		panelmetas.add(txtpnMeta_1);
+		txtpnMeta_1.setBorder(null);
+>>>>>>> origin/master
 		
 		JTextPane txtpnDatalimite = new JTextPane();
 		txtpnDatalimite.setBackground(SystemColor.menu);
 		txtpnDatalimite.setText("Data-Limite");
+<<<<<<< HEAD
 		txtpnDatalimite.setBounds(99, 37, 89, 20);
 		txtpnDatalimite.setBorder(new LineBorder(new Color(0, 0, 0)));
+=======
+		txtpnDatalimite.setBounds(128, 37, 79, 20);
+		txtpnDatalimite.setBorder(null);
+>>>>>>> origin/master
 		panelmetas.add(txtpnDatalimite);
 		
 		JTextPane textPane_1 = new JTextPane();
 		textPane_1.setBackground(SystemColor.menu);
 		textPane_1.setText("        %");
+<<<<<<< HEAD
 		textPane_1.setBounds(180, 37, 99, 20);
 		textPane_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelmetas.add(textPane_1);
 
 		JPanel panelmembros = new JPanel();
 		panelmembros.setBounds(314, 40, 245, 375);
+=======
+		textPane_1.setBounds(220, 37, 69, 20);
+		textPane_1.setBorder(null);
+		panelmetas.add(textPane_1);
+		
+		JButton AbrirMeta = new JButton("Abrir Meta");
+		AbrirMeta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int selecionada = tablemetas.getSelectedRow();
+				selecao = tablemetas.getValueAt(selecionada, 2).toString();
+				String selecaometa = tablemetas.getValueAt(selecionada, 0).toString();
+				
+				String meta;
+				meta = JOptionPane.showInputDialog("Altere andamento da meta!");
+				if (meta != null){
+					tablemetas.setValueAt(meta, selecionada, 2);
+					essegrupo.listadegrupos.get(grupo).getListademetas().get(selecaometa).setPorcentagem(meta);;
+				}
+				
+			}
+		});
+		AbrirMeta.setBounds(199, 341, 106, 23);
+		panelmetas.add(AbrirMeta);
+
+		JPanel panelmembros = new JPanel();
+		panelmembros.setBounds(335, 40, 224, 375);
+>>>>>>> origin/master
 		panelmembros.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panelmembros);
 		panelmembros.setLayout(null);
@@ -218,6 +288,10 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 		}
 
 		JButton btnAddMembro = new JButton("Add Membro");
+<<<<<<< HEAD
+=======
+		btnAddMembro.setBounds(10, 250, 93, 23);
+>>>>>>> origin/master
 		btnAddMembro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String addmembro = AddMembroTextField.getText().trim();
@@ -233,10 +307,17 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 				AddMembroTextField.setText("");
 			}
 		});
+<<<<<<< HEAD
 		btnAddMembro.setBounds(10, 250, 108, 23);
 		panelmembros.add(btnAddMembro);
 
 		JButton btnExcluiMembro = new JButton("Exclui Membro");
+=======
+		panelmembros.add(btnAddMembro);
+
+		JButton btnExcluiMembro = new JButton("Exclui Membro");
+		btnExcluiMembro.setBounds(107, 250, 101, 23);
+>>>>>>> origin/master
 		btnExcluiMembro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
@@ -252,6 +333,7 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 				}
 			}
 		});
+<<<<<<< HEAD
 		btnExcluiMembro.setBounds(117, 250, 118, 23);
 		panelmembros.add(btnExcluiMembro);
 
@@ -264,6 +346,19 @@ public class InterfaceInternaGruposCoordenador extends JFrame {
 
 		AddMembroTextField = new JTextField();
 		AddMembroTextField.setBounds(10, 219, 218, 20);
+=======
+		panelmembros.add(btnExcluiMembro);
+
+		JTextPane txtpnMembros = new JTextPane();
+		txtpnMembros.setBounds(94, 11, 69, 23);
+		txtpnMembros.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtpnMembros.setBackground(SystemColor.menu);
+		txtpnMembros.setText("MEMBROS");
+		panelmembros.add(txtpnMembros);
+
+		AddMembroTextField = new JTextField();
+		AddMembroTextField.setBounds(10, 219, 198, 20);
+>>>>>>> origin/master
 		panelmembros.add(AddMembroTextField);
 		AddMembroTextField.setColumns(10);
 

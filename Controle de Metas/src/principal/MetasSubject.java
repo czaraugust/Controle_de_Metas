@@ -1,12 +1,16 @@
 package principal; 
 
-public class Metas {
+public class MetasSubject implements MetasObserver {
 	String grupo, meta, data, criador;
 	String porcentagem;
 
 
 
+<<<<<<< HEAD:Controle de Metas/src/principal/Metas.java
 	public Metas(String grupo, String meta, String data, String criador,  String porcentagem) {
+=======
+	public MetasSubject(String grupo, String meta, String data, String criador,  String porcentagem) {
+>>>>>>> origin/master:Controle de Metas/src/principal/MetasSubject.java
 		super();
 		this.grupo = grupo;
 		this.meta = meta;

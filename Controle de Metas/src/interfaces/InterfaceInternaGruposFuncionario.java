@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+<<<<<<< HEAD
+=======
+import javax.swing.JOptionPane;
+>>>>>>> origin/master
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
@@ -20,12 +24,24 @@ import principal.Grupo;
 import java.awt.Color;
 import java.util.Set;
 
+<<<<<<< HEAD
+=======
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+>>>>>>> origin/master
 public class InterfaceInternaGruposFuncionario extends JFrame {
 
 	private JPanel contentPane;
 	private String grupo;
 	private JTable tablemetas, tablemembros;	
 	private DefaultTableModel modelometas, modelomebros;
+<<<<<<< HEAD
+=======
+	private String selecao;
+>>>>>>> origin/master
 	
 	public InterfaceInternaGruposFuncionario(String grupo) {
 		this.grupo  = grupo;
@@ -45,7 +61,11 @@ public class InterfaceInternaGruposFuncionario extends JFrame {
 		tablemetas.setBorder(new LineBorder(new Color(0, 0, 0)));
 		tablemetas.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		tablemetas.setBackground(SystemColor.menu);
+<<<<<<< HEAD
 		tablemetas.setBounds(10, 44, 209, 171);
+=======
+		tablemetas.setBounds(10, 55, 209, 176);
+>>>>>>> origin/master
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 500, 350);
@@ -57,8 +77,14 @@ public class InterfaceInternaGruposFuncionario extends JFrame {
 		
 	
 		JPanel panelMetas = new JPanel();
+<<<<<<< HEAD
 		panelMetas.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelMetas.setBounds(10, 11, 229, 259);
+=======
+		panelMetas.setBackground(SystemColor.menu);
+		panelMetas.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelMetas.setBounds(10, 11, 229, 276);
+>>>>>>> origin/master
 		contentPane.add(panelMetas);
 		panelMetas.add(tablemetas);
 		panelMetas.setLayout(null);
@@ -70,9 +96,51 @@ public class InterfaceInternaGruposFuncionario extends JFrame {
 		txtpnMetas.setBackground(SystemColor.menu);
 		txtpnMetas.setText("Metas");
 		
+<<<<<<< HEAD
 		JPanel panelMembros = new JPanel();
 		panelMembros.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelMembros.setBounds(262, 11, 212, 259);
+=======
+		JButton AbrirMeta = new JButton("Abrir Meta");
+		AbrirMeta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int selecionada = tablemetas.getSelectedRow();
+				selecao = tablemetas.getValueAt(selecionada, 2).toString();
+				String selecaometa = tablemetas.getValueAt(selecionada, 0).toString();
+				System.out.println("VALOR" + selecao);
+				String meta;
+				meta = JOptionPane.showInputDialog("Altere andamento da meta!");
+				if (meta != null){
+					tablemetas.setValueAt(meta, selecionada, 2);
+					essegrupo.listadegrupos.get(grupo).getListademetas().get(selecaometa).setPorcentagem(meta);;
+				}
+			}
+		});
+		AbrirMeta.setBounds(29, 242, 150, 23);
+		panelMetas.add(AbrirMeta);
+		
+		JTextPane txtpnMetas_1 = new JTextPane();
+		txtpnMetas_1.setBackground(SystemColor.menu);
+		txtpnMetas_1.setText("Metas");
+		txtpnMetas_1.setBounds(10, 32, 48, 20);
+		panelMetas.add(txtpnMetas_1);
+		
+		JTextPane txtpnDatalimite = new JTextPane();
+		txtpnDatalimite.setText("   Data-Limite");
+		txtpnDatalimite.setBackground(SystemColor.menu);
+		txtpnDatalimite.setBounds(68, 32, 85, 20);
+		panelMetas.add(txtpnDatalimite);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBackground(SystemColor.menu);
+		textPane.setText("%");
+		textPane.setBounds(171, 32, 48, 20);
+		panelMetas.add(textPane);
+		
+		JPanel panelMembros = new JPanel();
+		panelMembros.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelMembros.setBounds(262, 11, 212, 276);
+>>>>>>> origin/master
 		contentPane.add(panelMembros);
 		panelMembros.add(tablemembros);
 		panelMembros.setLayout(null);

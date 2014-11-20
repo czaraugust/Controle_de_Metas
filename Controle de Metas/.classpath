@@ -2,6 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/César/Documents/GitHub/Controle_de_Metas/Controle de Metas/jgoodies-forms-1.8.0.jar"/>
+=======
+	<classpathentry exported="true" kind="lib" path="C:/Users/César/Downloads/jgoodies-forms-1.8.0/jgoodies-forms-1.8.0.jar"/>
+>>>>>>> origin/master
 	<classpathentry kind="output" path="bin"/>
 </classpath>
